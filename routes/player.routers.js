@@ -1,7 +1,7 @@
 // routes/player.routers.js
 const Router = require('express');
 const router = new Router();
-const playerController = require('../controllers/player.controller');
+const playerController = require('../controller/player.controller');
 
 // 1. Импортируем Middleware-функцию
 const authMiddleware = require('../middleware/authMiddleware'); // Проверьте путь!
