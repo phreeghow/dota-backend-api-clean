@@ -6,6 +6,7 @@ if (!SECRET_KEY) {
     // process.exit(1); 
 }
 
+
 module.exports = function (req, res, next) {
     // Получаем токен из заголовка X-Auth-Token
     const token = req.headers['x-auth-token'];
