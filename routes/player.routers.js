@@ -10,6 +10,6 @@ const authMiddleware = require('../middleware/authMiddleware'); // Провер�
 router.post('/player', playerController.getOrCreatePlayer);
 
 // НОВЫЙ МАРШРУТ для обновления статистики (используется после раунда)
-router.post('/player/update', playerController.updatePlayerStats); 
+router.post('/player/update_stats', playerController.updatePlayerStats);
 
 module.exports = router;

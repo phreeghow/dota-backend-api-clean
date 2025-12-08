@@ -13,7 +13,7 @@ class PlayerController {
 
         console.log("No matching player, creating new...");
         const newPlayer = await db.query(
-            "INSERT INTO player (steam_id, currency, boss_kills, wins) VALUES ($1, $2, $3, $4) RETURNING *", 
+            "INSERT INTO player (steam_id, currency, boss_kills) VALUES ($1, $2, $3) RETURNING *", 
             [steam_id, 0, 0, 0]
         );
         res.json(newPlayer.rows[0]);
@@ -21,7 +21,7 @@ class PlayerController {
 
     async updatePlayerStats(req, res) {
         // Мы ожидаем *дельту* (разницу) в статистике, заработанную в раунде.
-        const { steam_id, currency, boss_kills, wins } = req.body; 
+        const { steam_id, currency, boss_kills } = req.body; 
 
         if (!steam_id) {
             return res.status(400).json({ message: "Missing steam_id." });
@@ -33,15 +33,13 @@ class PlayerController {
                 `UPDATE player 
                  SET 
                     currency = currency + $2,     
-                    boss_kills = boss_kills + $3, 
-                    wins = wins + $4              
+                    boss_kills = boss_kills + $3,            
                     WHERE steam_id = $1
                     RETURNING *`, // Возвращаем обновленную строку
                 [
                     steam_id, 
-                    parseInt(currency) || 0, // Убеждаемся, что это число, или 0, если нет
+                    parseInt(currency) || 0,
                     parseInt(boss_kills) || 0, 
-                    parseInt(wins) || 0
                 ]
             );
 
