@@ -14,7 +14,7 @@ class PlayerController {
         console.log("No matching player, creating new...");
         const newPlayer = await db.query(
             "INSERT INTO player (steam_id, currency, boss_kills) VALUES ($1, $2, $3) RETURNING *", 
-            [steam_id, 0, 0, 0]
+            [steam_id, 0, 0 ]
         );
         res.json(newPlayer.rows[0]);
     }
