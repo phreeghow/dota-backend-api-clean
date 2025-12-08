@@ -39,7 +39,7 @@ class PlayerController {
                 [
                     steam_id, 
                     parseInt(currency) || 0,
-                    parseInt(boss_kills) || 0, 
+                    parseInt(boss_kills) || 0
                 ]
             );
 
