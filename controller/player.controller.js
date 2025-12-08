@@ -33,7 +33,7 @@ class PlayerController {
                 `UPDATE player 
                  SET 
                     currency = currency + $2,     
-                    boss_kills = boss_kills + $3,            
+                    boss_kills = boss_kills + $3            
                     WHERE steam_id = $1
                     RETURNING *`, // Возвращаем обновленную строку
                 [
