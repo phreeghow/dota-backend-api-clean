@@ -7,7 +7,6 @@ class PlayerController {
         
         const player = await db.query("SELECT * FROM player WHERE steam_id = $1", [steam_id]);
         if (player.rows[0]) {
-            console.log("PLAYER ALREADY EXISTS");
             return res.json(player.rows[0]);
         }
 
