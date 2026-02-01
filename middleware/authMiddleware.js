@@ -1,7 +1,7 @@
 const SECRET_KEY = process.env.SERVER_SECRET_KEY; 
 
 if (!SECRET_KEY) {
-    console.error("FATAL ERROR: SERVER_SECRET_KEY is not defined in environment variables!");
+    console.error("ERROR: SERVER_SECRET_KEY is not defined in environment variables!");
 }
 
 module.exports = function (req, res, next) {
